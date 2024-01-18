@@ -2,47 +2,43 @@ package com.generation.bestgamer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "tb_produto")
 public class Produto {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
-	@NotNull(message = "Atributo nome obrigatorio")
+	@NotNull(message = "O atributo Nome do Produto é obrigatorio")
 	private String nomeProduto;
 	
-	@NotNull(message = "Atributo preço é obrigatorio")
+	@NotNull(message = "O atributo Preço é obrigatorio")
 	private String preco;
 	
-	@NotNull(message = "Atributo desenvolivido por é  obrigatorio")
-	private String desenvolvidoPor; 
+	@NotNull(message = "O atributo Desenvolvedor é obrigatorio")
+	private String desenvolvidoPor;
 	
-	@Size(min = 5, max = 1000, message = "A descrição do produto deve ter no minino 10 caracteres e no maxímo 1000")
-	@NotNull(message = "Atributo descrição obrigatorio")
+	@Size(min = 5, max = 100, message = "O Atributo Descrição precisa ter no mínimo 5 caracter e no máximo 1000")
+	@NotNull(message = "O atributo Descrição é obrigatorio")
 	private String descricao;
 	
-	@NotNull(message = "Atributo data de lançamento é  obrigatorio")
+    @NotNull(message = "O atributo Data de Lançamento é obrigatorio")
 	private String dataLancamento;
-	
-	
-	@ManyToOne
-	@JsonIgnoreProperties("produto")
-	private Categoria categoria;
+    
+    @ManyToOne
+    @JsonIgnoreProperties("produto")
+    private Categoria categoria;
 
 	public Long getId() {
 		return id;
@@ -84,14 +80,13 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public String getDataLancamento() {
+	public String getDataLacamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(String dataLancamento) {
-		this.dataLancamento = dataLancamento;
+	public void setDataLacamento(String dataLacamento) {
+		this.dataLancamento = dataLacamento;
 	}
-
 
 	public Categoria getCategoria() {
 		return categoria;
@@ -99,6 +94,8 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
+	} 
+	
+	
 
 }
